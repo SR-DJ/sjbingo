@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "description": "BINGO单物品出现权重配置文件",
+  "instructions": {
+    "weight": "权重值越高，物品出现的概率越大。默认权重为1。设置为0表示该物品不会出现。",
+    "example": "权重为2的物品出现概率是权重为1的物品的2倍"
+  },
+  "outer": {
+    "description": "外围区域（最外圈）物品权重配置",
+    "folder": "images1/outer/",
+    "items": {
+      "1.jpg": { "weight": 1, "name": "外围物品1" },
+      "2.jpg": { "weight": 1, "name": "外围物品2" },
+      "3.jpg": { "weight": 1, "name": "外围物品3" },
+      "4.jpg": { "weight": 1, "name": "外围物品4" },
+      "5.jpg": { "weight": 1, "name": "外围物品5" },
+      "6.jpg": { "weight": 1, "name": "外围物品6" },
+      "7.jpg": { "weight": 1, "name": "外围物品7" },
+      "8.jpg": { "weight": 1, "name": "外围物品8" },
+      "9.jpg": { "weight": 1, "name": "外围物品9" },
+      "10.jpg": { "weight": 1, "name": "外围物品10" },
+      "11.jpg": { "weight": 1, "name": "外围物品11" },
+      "12.jpg": { "weight": 1, "name": "外围物品12" },
+      "13.jpg": { "weight": 1, "name": "外围物品13" },
+      "14.jpg": { "weight": 1, "name": "外围物品14" },
+      "15.jpg": { "weight": 1, "name": "外围物品15" },
+      "16.jpg": { "weight": 1, "name": "外围物品16" },
+      "17.jpg": { "weight": 1, "name": "外围物品17" },
+      "18.jpg": { "weight": 1, "name": "外围物品18" },
+      "19.jpg": { "weight": 1, "name": "外围物品19" },
+      "20.jpg": { "weight": 1, "name": "外围物品20" },
+      "21.jpg": { "weight": 1, "name": "外围物品21" },
+      "22.jpg": { "weight": 1, "name": "外围物品22" },
+      "23.jpg": { "weight": 1, "name": "外围物品23" }
+    }
+  },
+  "inner": {
+    "description": "内围区域物品权重配置",
+    "folder": "images1/inner/",
+    "items": {
+      "1.jpg": { "weight": 1, "name": "内围物品1", "note": "只能使用1次" },
+      "2.jpg": { "weight": 1, "name": "内围物品2", "note": "最多使用2次" },
+      "3.jpg": { "weight": 1, "name": "内围物品3", "note": "最多使用2次" },
+      "4.jpg": { "weight": 1, "name": "内围物品4", "note": "最多使用2次" },
+      "5.jpg": { "weight": 1, "name": "内围物品5", "note": "最多使用2次" },
+      "6.jpg": { "weight": 1, "name": "内围物品6", "note": "最多使用2次" },
+      "7.jpg": { "weight": 1, "name": "内围物品7", "note": "最多使用2次" },
+      "8.jpg": { "weight": 1, "name": "内围物品8" },
+      "9.jpg": { "weight": 1, "name": "内围物品9" },
+      "10.jpg": { "weight": 1, "name": "内围物品10" },
+      "11.jpg": { "weight": 1, "name": "内围物品11" },
+      "12.jpg": { "weight": 1, "name": "内围物品12" },
+      "13.jpg": { "weight": 1, "name": "内围物品13" },
+      "14.jpg": { "weight": 1, "name": "内围物品14" },
+      "15.jpg": { "weight": 1, "name": "内围物品15" },
+      "16.jpg": { "weight": 1, "name": "内围物品16" },
+      "17.jpg": { "weight": 1, "name": "内围物品17" },
+      "18.jpg": { "weight": 1, "name": "内围物品18" },
+      "19.jpg": { "weight": 1, "name": "内围物品19" },
+      "20.jpg": { "weight": 1, "name": "内围物品20" },
+      "21.jpg": { "weight": 1, "name": "内围物品21" },
+      "22.jpg": { "weight": 1, "name": "内围物品22" },
+      "23.jpg": { "weight": 1, "name": "内围物品23", "note": "最多使用2次" },
+      "24.jpg": { "weight": 1, "name": "内围物品24" },
+      "25.jpg": { "weight": 1, "name": "内围物品25", "note": "最多使用2次" },
+      "26.jpg": { "weight": 1, "name": "内围物品26", "note": "最多使用2次" },
+      "27.jpg": { "weight": 1, "name": "内围物品27" },
+      "28.jpg": { "weight": 1, "name": "内围物品28" }
+    }
+  }
+}
