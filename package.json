@@ -2,7 +2,7 @@
   "name": "shihuo-bingo",
   "version": "1.0.0",
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist/js && npx javascript-obfuscator ./src/js --output ./dist/js --compact true --self-defending true && cp src/*.html dist/ && cp -r src/css dist/ && cp -r src/images1 dist/ && cp -r src/images2 dist/ && cp -r src/images3 dist/"
+    "build": "rm -rf dist && mkdir -p dist/js && ./node_modules/.bin/javascript-obfuscator ./src/js --output ./dist/js --compact true --self-defending true && cp src/*.html dist/ && cp -r src/css dist/ && cp -r src/images1 dist/ && cp -r src/images2 dist/ && cp -r src/images3 dist/"
   },
   "devDependencies": {
     "javascript-obfuscator": "^4.1.0"
