@@ -23,8 +23,10 @@ jobs:
       - name: 安装依赖
         run: npm install
 
-      - name: 执行混淆构建
-        run: npm run build
+      - name: 修复执行权限并构建
+        run: |
+          chmod +x ./node_modules/.bin/javascript-obfuscator
+          npm run build
 
       - name: 发布到 GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -32,4 +34,4 @@ jobs:
           folder: dist
           branch: gh-pages
           clean: true
-          force: true  # 强制覆盖，解决手动创建分支带来的冲突
+          force: true
