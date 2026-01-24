@@ -31,4 +31,4 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }} # 显式使用 Token 确保权限
+          token: ${{ secrets.GITHUB_TOKEN }}
