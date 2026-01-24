@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>石火电竞指定航天bingo玩法</title>
+<!-- 性能优化：DNS预解析和资源预加载 -->
+<link href="." rel="preconnect"/>
+<link href="." rel="dns-prefetch"/>
+<!-- 预加载关键图片 -->
+<link as="image" href="images1/bg.png" rel="preload"/>
+<link as="image" href="images1/inner/1.jpg" rel="preload"/>
+<link as="image" href="images1/outer/1.jpg" rel="preload"/>
+<link as="image" href="images1/path1/1.jpg" rel="preload"/>
+<link as="image" href="images1/path2/1.jpg" rel="preload"/>
+
+<link href="css/index1.css" rel="stylesheet"/></head>
+<body>
+<!-- 主内容容器 -->
+<div class="main-container">
+<!-- 左侧规则区域 -->
+<div class="left-rules-section">
+<div class="rules-title">玩法规则</div>
+<div class="rules-content">
+<p>该玩法指定打航天，炸单一把加保底70W,老板在选择地图前可无限重置地图，直至选择到自己满意的地图，选好的地图一但定好，中途不可更改不可反悔！</p>
+<p>任意竖横斜连成线即为结单，保底打够也必须连成线才能结单</p>
+<p>老板需听从陪玩指挥该玩法摸到的红塞进保险也算进度，老板不可故意不塞红进保险</p>
+<p>图片中的钥匙卡只分为金卡、红卡、紫卡三类，不特定指定某个钥匙卡</p>
+<p>同时游戏中:红卡价值必须&gt;200W金卡价值必须&gt;100W小于100W的金卡算紫卡:紫卡价值必须&gt;50W</p>
+<p class="highlight-gold">特别提示:非洲之心/海洋之泪/复苏呼吸机 可以当万能格子</p>
+</div>
+</div>
+<!-- 右侧游戏区域 -->
+<div class="game-content">
+<!-- 顶部标题 -->
+<div class="header">
+<h1>石火电竞指定航天bingo玩法</h1>
+<div class="subtitle">BINGO MISSION</div>
+</div>
+<!-- 玩法按钮区 -->
+<div class="controls-area">
+<div class="mode-btn active" data-mode="3" onclick="selectMode(3, this)">
+<div class="txt-left">3连 <span class="txt-price">1188R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">2988W</span> / <span class="txt-bao">手游保</span><span class="txt-val">4588W</span></div>
+</div>
+<div class="mode-btn" data-mode="7" onclick="selectMode(7, this)">
+<div class="txt-left">7连 <span class="txt-price">6588R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">15888W</span> / <span class="txt-bao">手游保</span><span class="txt-val">2.6亿</span></div>
+</div>
+<div class="mode-btn" data-mode="4" onclick="selectMode(4, this)">
+<div class="txt-left">4连 <span class="txt-price">1588R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">3988W</span> / <span class="txt-bao">手游保</span><span class="txt-val">6588W</span></div>
+</div>
+<div class="mode-btn" data-mode="8" onclick="selectMode(8, this)">
+<div class="txt-left">8连 <span class="txt-price">10888R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">2.7亿</span> / <span class="txt-bao">手游保</span><span class="txt-val">4.4亿</span></div>
+</div>
+<div class="mode-btn" data-mode="5" onclick="selectMode(5, this)">
+<div class="txt-left">5连 <span class="txt-price">2188R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">5588W</span> / <span class="txt-bao">手游保</span><span class="txt-val">8888W</span></div>
+</div>
+<div class="mode-btn" data-mode="9" onclick="selectMode(9, this)">
+<div class="txt-left">9连 <span class="txt-price">12888R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">3.2亿</span> / <span class="txt-bao">手游保</span><span class="txt-val">5亿</span></div>
+</div>
+<div class="mode-btn" data-mode="6" onclick="selectMode(6, this)">
+<div class="txt-left">6连 <span class="txt-price">3288R</span></div>
+<div class="txt-right"><span class="txt-bao">端游保</span><span class="txt-val">8888W</span> / <span class="txt-bao">手游保</span><span class="txt-val">1.3亿</span></div>
+</div>
+</div>
+<!-- 9x9 网格 -->
+<div class="grid-wrapper">
+<div class="grid-container" id="grid"></div>
+</div>
+<!-- 底部功能区域 -->
+<div class="action-bar">
+<div class="mini-tip">当前目标：<span id="ruleText" style="color:#f00;font-weight:bold;">3</span> 连</div>
+<button id="resetBtn" onclick="generateNewGrid()">重新生成</button>
+<div class="system-btns">
+<button class="sys-btn file-op" onclick="exportDoc()">💾 导出文档</button>
+<button class="sys-btn file-op" onclick="triggerImport()">📂 导入文档</button>
+<button class="sys-btn" onclick="goHome()">↩ 返回主菜单</button>
+</div>
+<input accept=".json" id="fileInput" onchange="handleFileLoad(event)" type="file"/>
+</div>
+</div>
+</div>
+<!-- 右下角标识 -->
+<div class="brand-info">
+<div class="kook">
+            🎧 KOOK：<span class="highlight">6480</span>
+</div>
+<div class="mini-program">
+            📱 服务号/小程序: <span class="highlight">石火电竞</span>
+</div>
+<button class="weapp-btn" onclick="openWeapp()">
+<span class="weapp-icon">📱</span>
+<span>打开微信小程序</span>
+</button>
+</div>
+<!-- 历史记录面板 -->
+<div class="history-panel" id="historyPanel">
+<button class="history-toggle" onclick="toggleHistoryPanel()">
+<span class="badge" id="historyBadge">0</span>
+            历史记录
+        </button>
+<div class="history-content">
+<div class="history-header">
+<h3>📜 历史记录</h3>
+<button class="history-clear" onclick="clearHistory()">清空</button>
+</div>
+<div class="history-list" id="historyList">
+<div class="history-empty">暂无历史记录<br/>点击"重新生成"开始记录</div>
+</div>
+</div>
+</div>
+<!-- 弹窗 -->
+<div id="modal">
+<div class="modal-box">
+<div class="modal-text">您已完成订单<br/>订单已结束</div>
+<button class="modal-btn" onclick="closeModal()">确定</button>
+</div>
+</div>
+
+<script src="js/index1.js"></script></body>
+</html>

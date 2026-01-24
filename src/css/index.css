@@ -1,0 +1,737 @@
+/* --- 全局重置 --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            font-family: 'Microsoft YaHei', 'Heiti SC', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* --- 背景图片设置 --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images1/bg.png'); /* 您的背景图片路径 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.4; /* 背景透明度，可调整 */
+            z-index: -1;
+            /* filter: blur(1px); */ /* 轻微模糊效果，可选 */
+        }
+
+        /* 内容容器，确保内容清晰可见 */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- 头部文字区域样式 --- */
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* 主标题：石火电竞 */
+        .main-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            margin-bottom: 30px;
+            margin-left: 12px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(220, 20, 60, 0.8),
+                         0 0 20px rgba(220, 20, 60, 0.6),
+                         0 0 40px rgba(220, 20, 60, 0.4);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* --- 玩法规则容器 - 优化版 --- */
+        .game-rules-container {
+            background: rgba(25, 25, 25, 0.85);
+            border-radius: 10px;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 规则标题 */
+        .rules-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+            letter-spacing: 1px;
+        }
+
+        /* 规则内容（整段文字） */
+        .rules-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .rules-content b {
+            color: #dc143c;
+            font-weight: 700;
+        }
+
+        /* 规则底部 */
+        .rules-footer {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .warning-text {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            font-weight: 500;
+        }
+
+        /* --- 图片容器 - 三列布局 --- */
+        .image-gallery {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- 单个卡片 - 三张平均分布 --- */
+        .gallery-item {
+            flex: 1;
+            min-width: 0;
+            display: block;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- 图片样式 --- */
+        .gallery-item img {
+            width: 100%;
+            height: 420px; /* 从480px缩小到420px */
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: brightness(0.85);
+        }
+
+        /* --- 鼠标悬停交互 --- */
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+            border-color: #dc143c;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* --- 图片标签（显示玩法名称） --- */
+        .image-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            padding: 15px 12px 12px;
+            text-align: center;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .image-label span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+            letter-spacing: 1.5px;
+            display: block;
+        }
+
+        .gallery-item:hover .image-label {
+            background: linear-gradient(transparent, rgba(220, 20, 60, 0.3), rgba(0,0,0,0.95));
+        }
+
+        /* --- 底部Logo区域 - 优化版 --- */
+        .footer-logo {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 12px;
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .footer-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                #dc143c 20%, 
+                #dc143c 80%, 
+                transparent 100%);
+            z-index: 1;
+        }
+
+        .footer-logo-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.8), rgba(30, 30, 30, 0.9));
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.15), rgba(180, 10, 50, 0.2));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
+            border-color: rgba(220, 20, 60, 0.4);
+        }
+
+        .contact-icon {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.3));
+        }
+
+        .kook-item {
+            color: #e8df28;
+        }
+
+        .wechat-item {
+            color: #c10707;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* --- 微信小程序提示框 --- */
+        .wechat-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.95);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid #07c160;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            margin-bottom: 6px;
+            backdrop-filter: blur(4px);
+        }
+
+        .wechat-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 4px;
+            border-style: solid;
+            border-color: #07c160 transparent transparent transparent;
+        }
+
+        .wechat-item:hover .wechat-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- 未成年人禁止下单提示 - 右下角固定 --- */
+        .minor-warning {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: center;
+            z-index: 100;
+            max-width: 300px;
+        }
+
+        .minor-warning-content {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ff4444;
+            padding: 12px 20px;
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 8px;
+            border: 2px solid rgba(255, 68, 68, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2);
+            backdrop-filter: blur(5px);
+            animation: warningPulse 2s infinite;
+        }
+
+        .warning-icon {
+            font-size: 1.4rem;
+        }
+
+        /* --- 背景设置面板（可选） --- */
+        .background-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            display: none; /* 默认隐藏，可通过JS显示 */
+        }
+
+        .background-controls h4 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .bg-opacity-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .bg-opacity-control input {
+            width: 80px;
+        }
+
+        /* --- 动画定义 --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes warningPulse {
+            0%, 100% {
+                box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2);
+                border-color: rgba(255, 68, 68, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
+                border-color: rgba(255, 68, 68, 0.5);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: rotate(-5deg);
+            }
+            20%, 40%, 60%, 80% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* --- 响应式设计 --- */
+        @media (max-width: 1200px) {
+            .main-title {
+                font-size: 3.8rem;
+                letter-spacing: 10px;
+            }
+            .gallery-item img {
+                height: 380px;
+            }
+            .image-gallery {
+                gap: 18px;
+                max-width: 950px;
+            }
+            .footer-logo {
+                max-width: 360px;
+            }
+            .minor-warning {
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 3.2rem;
+                letter-spacing: 8px;
+            }
+            .gallery-item img {
+                height: 340px;
+            }
+            .image-label span {
+                font-size: 1.1rem;
+            }
+            .image-gallery {
+                gap: 16px;
+                margin-bottom: 35px;
+            }
+            .contact-item {
+                font-size: 1rem;
+                padding: 10px 16px;
+            }
+            .game-rules-container {
+                max-width: 700px;
+                padding: 18px;
+            }
+            .rules-title {
+                font-size: 1.2rem;
+            }
+            .rules-content {
+                font-size: 1.05rem;
+            }
+            .footer-logo {
+                max-width: 340px;
+                padding: 18px;
+            }
+            .minor-warning {
+                max-width: 260px;
+                bottom: 15px;
+                right: 15px;
+            }
+            .minor-warning-content {
+                font-size: 0.95rem;
+                padding: 10px 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.8rem;
+                letter-spacing: 6px;
+                margin-left: 6px;
+                margin-bottom: 20px;
+            }
+            
+            .game-rules-container {
+                padding: 16px;
+                margin: 0 auto 30px;
+                max-width: 600px;
+            }
+            
+            .rules-title {
+                font-size: 1.15rem;
+            }
+            
+            .rules-content {
+                font-size: 1rem;
+                line-height: 1.5;
+                padding: 12px;
+            }
+            
+            .warning-text {
+                font-size: 0.85rem;
+            }
+            
+            .image-gallery {
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-bottom: 30px;
+            }
+            
+            .gallery-item {
+                flex: 0 0 calc(33.333% - 8px);
+            }
+            
+            .gallery-item img {
+                height: 280px;
+            }
+            
+            .image-label {
+                padding: 12px 10px 10px;
+            }
+            
+            .image-label span {
+                font-size: 1rem;
+            }
+            
+            .footer-logo {
+                max-width: 320px;
+                padding: 16px;
+                margin-top: 20px;
+            }
+            
+            .contact-item {
+                font-size: 0.95rem;
+                gap: 10px;
+                padding: 8px 14px;
+            }
+            
+            .contact-icon {
+                font-size: 1.2rem;
+            }
+            
+            .wechat-tooltip {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .minor-warning {
+                max-width: 240px;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .minor-warning-content {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+                gap: 8px;
+            }
+            
+            .warning-icon {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-section {
+                margin-bottom: 25px;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .game-rules-container {
+                padding: 14px;
+                margin: 0 auto 25px;
+                max-width: 500px;
+            }
+            
+            .rules-title {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+            
+            .rules-content {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                padding: 10px;
+            }
+            
+            .warning-text {
+                font-size: 0.8rem;
+            }
+            
+            .gallery-item {
+                flex: 0 0 100%;
+            }
+            
+            .gallery-item img {
+                height: 280px;
+            }
+            
+            body {
+                padding: 20px 15px;
+            }
+            
+            .footer-logo {
+                max-width: 300px;
+                padding: 14px;
+                margin-top: 20px;
+            }
+            
+            .footer-logo-content {
+                gap: 10px;
+            }
+            
+            .contact-item {
+                font-size: 0.9rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                padding: 8px 12px;
+            }
+            
+            .contact-icon {
+                font-size: 1.1rem;
+            }
+            
+            .wechat-tooltip {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+                white-space: normal;
+                width: 140px;
+                text-align: center;
+            }
+            
+            .minor-warning {
+                max-width: 220px;
+                bottom: 8px;
+                right: 8px;
+            }
+            
+            .minor-warning-content {
+                font-size: 0.85rem;
+                padding: 6px 14px;
+                gap: 6px;
+                flex-direction: column;
+            }
+            
+            .warning-icon {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.7rem;
+                letter-spacing: 3px;
+            }
+            
+            .rules-title {
+                font-size: 1rem;
+            }
+            
+            .rules-content {
+                font-size: 0.9rem;
+            }
+            
+            .gallery-item img {
+                height: 240px;
+            }
+            
+            .image-label span {
+                font-size: 0.95rem;
+            }
+            
+            .footer-logo {
+                max-width: 280px;
+                padding: 12px;
+            }
+            
+            .contact-item {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+            
+            .wechat-tooltip {
+                width: 130px;
+                font-size: 0.7rem;
+            }
+            
+            .minor-warning {
+                max-width: 200px;
+                bottom: 5px;
+                right: 5px;
+            }
+            
+            .minor-warning-content {
+                font-size: 0.8rem;
+                padding: 5px 12px;
+            }
+            
+            .warning-icon {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 针对中等屏幕的优化 */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .gallery-item img {
+                height: 300px;
+            }
+        }

@@ -1,9 +1,17 @@
 {
-  "devDependencies": {
-    "javascript-obfuscator": "^5.1.0"
-  },
+  "name": "shihuo-bingo",
+  "version": "1.0.0",
+  "description": "石火电竞项目 - 自动混淆构建",
+  "main": "index.js",
   "scripts": {
-  "build": "node scripts/build.js"
-}
-
+    "clean": "shx rm -rf dist",
+    "prepare-dir": "shx mkdir -p dist/js",
+    "obfuscate": "javascript-obfuscator ./src/js --output ./dist/js --compact true --self-defending true",
+    "copy-assets": "shx cp src/*.html dist/ && shx cp -r src/css dist/",
+    "build": "npm run clean && npm run prepare-dir && npm run obfuscate && npm run copy-assets"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.0",
+    "shx": "^0.3.4"
+  }
 }
