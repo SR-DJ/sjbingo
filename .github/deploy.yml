@@ -1,0 +1,50 @@
+# .github/workflows/deploy.yml
+
+name: Build and Deploy to GitHub Pages
+
+# 触发条件：当代码被推送到 main 分支时触发
+on:
+  push:
+    branches:
+      - main # 或者你的主分支名，如 master
+
+# 任务
+jobs:
+  build-and-deploy:
+    # 运行环境：使用最新的 Ubuntu
+    runs-on: ubuntu-latest
+
+    # 步骤
+    steps:
+      # 步骤1: 检出代码
+      # 这个 Action 会把你的仓库代码下载到运行器中
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      # 步骤2: 设置 Node.js 环境
+      # 指定 Node.js 版本，并设置缓存以加快后续构建速度
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # 推荐使用 LTS 版本
+          cache: 'npm'
+
+      # 步骤3: 安装项目依赖
+      # 运行 npm ci 会根据 package-lock.json 精确安装依赖，比 npm install 更快更可靠
+      - name: Install dependencies 📦
+        run: npm ci
+
+      # 步骤4: 构建和混淆代码
+      # 运行你在 package.json 中定义的 build 脚本
+      - name: Build and Obfuscate 🏗️
+        run: npm run build
+
+      # 步骤5: 部署到 gh-pages 分支
+      # 使用一个流行的 Action 来处理部署的复杂性
+      - name: Deploy to GitHub Pages 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # 指定要发布的是 dist 目录
+          # 可选：如果你想使用自定义域名
+          # cname: your.custom.domain.com
