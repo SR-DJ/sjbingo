@@ -7,7 +7,7 @@
     "clean": "shx rm -rf dist",
     "prepare-dir": "shx mkdir -p dist/js",
     "obfuscate": "javascript-obfuscator ./src/js --output ./dist/js --compact true --self-defending true",
-    "copy-assets": "shx cp src/*.html dist/ && shx cp -r src/css dist/",
+    "copy-assets": "shx cp src/*.html dist/ && shx cp -r src/css dist/ && shx cp -r src/images1 dist/ && shx cp -r src/images2 dist/ && shx cp -r src/images3 dist/",
     "build": "npm run clean && npm run prepare-dir && npm run obfuscate && npm run copy-assets"
   },
   "devDependencies": {

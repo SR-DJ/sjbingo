@@ -3,7 +3,7 @@ name: 自动混淆并发布到 Pages
 on:
   push:
     branches:
-      - main  # 当你向 main 分支提交代码时触发
+      - main  # 监听 main 分支的提交
 
 permissions:
   contents: write
@@ -23,11 +23,12 @@ jobs:
       - name: 安装依赖
         run: npm install
 
-      - name: 执行混淆和构建
+      - name: 执行混淆构建
         run: npm run build
 
       - name: 发布到 GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist  # 将混淆后的 dist 文件夹发布
-          branch: gh-pages  # 发布到 gh-pages 分支
+          folder: dist
+          branch: gh-pages
+          clean: true
