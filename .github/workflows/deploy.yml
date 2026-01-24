@@ -31,4 +31,5 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
-          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
+          force: true  # 强制覆盖，解决手动创建分支带来的冲突
