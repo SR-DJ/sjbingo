@@ -3,7 +3,7 @@ name: 自动混淆并发布到 Pages
 on:
   push:
     branches:
-      - main  # 监听 main 分支的提交
+      - main
 
 permissions:
   contents: write
@@ -31,4 +31,4 @@ jobs:
         with:
           folder: dist
           branch: gh-pages
-          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }} # 显式使用 Token 确保权限
